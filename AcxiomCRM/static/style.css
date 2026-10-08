@@ -1,0 +1,15 @@
+body{font-family:Arial,sans-serif;margin:0;background:#f4f6f9;color:#222}
+nav{background:#1f3a5f;padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+nav b{color:#fff;font-size:20px;margin-right:10px}nav a{color:#dce6f5;text-decoration:none}
+nav form{margin-left:auto}main{max-width:1000px;margin:20px auto;padding:0 15px}
+.card{background:#fff;padding:15px;border-radius:6px;box-shadow:0 1px 3px #0002}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+.cards .card b{display:block;font-size:26px;color:#1f3a5f}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:left;font-size:14px}
+th{background:#e8edf4}label{display:block;margin-top:10px;font-weight:bold}
+input,select{width:100%;padding:8px;box-sizing:border-box;margin-top:4px}
+button,.btn{background:#1f3a5f;color:#fff;border:0;padding:8px 14px;border-radius:4px;cursor:pointer;text-decoration:none;font-size:14px}
+button.red{background:#c0392b}.bar{display:flex;gap:8px;margin-bottom:12px}.bar input{width:250px;margin:0}
+.err{color:#c0392b;font-size:13px}.alert{padding:10px;border-radius:4px;margin-bottom:10px}
+.success{background:#d4edda}.danger{background:#f8d7da}form.inline{display:inline}.box{max-width:400px;margin:auto}

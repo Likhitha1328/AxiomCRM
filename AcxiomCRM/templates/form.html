@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block body %}<div class="card box"><h2>{{ 'Edit' if edit else 'New' }} {{ m.title }}</h2>
+<form method="post"><input type="hidden" name="token" value="{{ token }}">
+{% for n, label, typ, opts in m.fields %}<label>{{ label }}</label>
+{% if typ == 'select' %}<select name="{{ n }}">{% for o in opts %}<option {{ 'selected' if d[n] == o }}>{{ o }}</option>{% endfor %}</select>
+{% else %}<input name="{{ n }}" value="{{ d[n] or '' }}" maxlength="100" type="{{ {'email':'email','phone':'tel','number':'number','date':'date'}.get(typ,'text') }}"
+{{ 'required' if n not in optional }}
+{% if typ == 'phone' %}pattern="[6-9][0-9]{9}" title="10-digit mobile number"{% endif %}
+{% if typ == 'number' %}step="any" min="0"{% if n == 'probability' %} max="100"{% endif %}{% endif %}>{% endif %}
+{% if errors[n] %}<div class="err">{{ errors[n] }}</div>{% endif %}{% endfor %}<br>
+<button>Save</button> <a href="/m/{{ t }}">Cancel</a></form></div>{% endblock %}

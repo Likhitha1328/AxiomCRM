@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block body %}<h2>Users</h2><p>Saving a user also clears any lockout.</p>
+<table><tr><th>Name</th><th>Email</th><th>Role</th><th>Active</th><th>Locked Until</th><th></th></tr>
+{% for r in rows %}<tr><form method="post"><input type="hidden" name="token" value="{{ token }}"><input type="hidden" name="id" value="{{ r.id }}">
+<td>{{ r.name }}</td><td>{{ r.email }}</td>
+<td><select name="role">{% for x in roles %}<option {{ 'selected' if x == r.role }}>{{ x }}</option>{% endfor %}</select></td>
+<td><input type="checkbox" name="active" {{ 'checked' if r.active }}></td><td>{{ r.lock_until or '-' }}</td><td><button>Save</button></td></form></tr>{% endfor %}</table>{% endblock %}

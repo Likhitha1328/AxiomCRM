@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block body %}<h2>Audit Log</h2>
+<form class="bar"><input name="action" value="{{ a }}" placeholder="Filter by action (Login, Create...)"><button>Filter</button></form>
+<div style="overflow-x:auto"><table><tr><th>Time</th><th>User</th><th>Action</th><th>Entity</th><th>Record</th><th>Old</th><th>New</th><th>IP</th></tr>
+{% for r in rows %}<tr><td>{{ r.created }}</td><td>{{ r.email }}</td><td>{{ r.action }}</td><td>{{ r.entity }}</td><td>{{ r.record_id }}</td><td>{{ r.old_value }}</td><td>{{ r.new_value }}</td><td>{{ r.ip }}</td></tr>{% endfor %}</table></div>{% endblock %}

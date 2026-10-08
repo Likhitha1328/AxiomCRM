@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block body %}<h2>Dashboard</h2>
+<div class="cards">{% for k, v in stats.items() %}<div class="card">{{ k }}<b>{{ v }}</b></div>{% endfor %}</div>
+<div class="charts"><div class="card"><canvas id="c1"></canvas></div><div class="card"><canvas id="c2"></canvas></div></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+new Chart(c1,{type:'doughnut',data:{labels:{{ lead_labels|tojson }},datasets:[{data:{{ lead_data|tojson }}}]},options:{plugins:{title:{display:true,text:'Lead Status'}}}});
+new Chart(c2,{type:'bar',data:{labels:{{ opp_labels|tojson }},datasets:[{label:'Opportunities',data:{{ opp_data|tojson }}}]},options:{plugins:{title:{display:true,text:'Opportunity Pipeline'}}}});
+</script>{% endblock %}

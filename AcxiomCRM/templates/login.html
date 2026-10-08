@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block body %}<div class="card box"><h2>Login</h2>
+<form method="post"><input type="hidden" name="token" value="{{ token }}">
+<label>Email</label><input type="email" name="email" required>
+<label>Password</label><input type="password" name="password" required><br><br>
+<button>Login</button> <a href="/register">Register</a></form></div>{% endblock %}

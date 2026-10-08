@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AcxiomCRM</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<nav><b>AcxiomCRM</b>
+{% if session.uid %}
+<a href="/">Dashboard</a><a href="/m/customers">Customers</a><a href="/m/leads">Leads</a>
+<a href="/m/opportunities">Opportunities</a><a href="/m/followups">Follow-Ups</a>
+{% if session.role == 'Admin' %}<a href="/users">Users</a><a href="/audit">Audit Log</a>{% endif %}
+<form method="post" action="/logout"><input type="hidden" name="token" value="{{ token }}"><button>Logout ({{ session.name }} - {{ session.role }})</button></form>
+{% endif %}</nav>
+<main>{% for c, m in get_flashed_messages(with_categories=true) %}<div class="alert {{ c }}">{{ m }}</div>{% endfor %}
+{% block body %}{% endblock %}</main></body></html>

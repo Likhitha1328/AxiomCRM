@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block body %}<div class="card box"><h2>Register</h2>
+<form method="post"><input type="hidden" name="token" value="{{ token }}">
+<label>Name</label><input name="name" maxlength="100" required><div class="err">{{ errors.name }}</div>
+<label>Email</label><input type="email" name="email" required><div class="err">{{ errors.email }}</div>
+<label>Password</label><input type="password" name="password" minlength="8" required><div class="err">{{ errors.password }}</div><br>
+<button>Register</button> <a href="/login">Login</a></form></div>{% endblock %}

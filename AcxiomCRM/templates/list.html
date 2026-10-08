@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block body %}<h2>{{ m.title }}</h2>
+<form method="get" class="bar"><input name="q" value="{{ q }}" placeholder="Search..."><button>Search</button><a class="btn" href="/m/{{ t }}/new">+ New</a></form>
+<div style="overflow-x:auto"><table><tr>{% for f in m.fields %}<th>{{ f[1] }}</th>{% endfor %}<th>Owner</th><th>Actions</th></tr>
+{% for r in rows %}<tr>{% for f in m.fields %}<td>{{ r[f[0]] }}</td>{% endfor %}<td>{{ r.owner_name }}</td><td>
+<a href="/m/{{ t }}/{{ r.id }}/edit">Edit</a>
+{% if t == 'leads' and r.status == 'Qualified' %}<form class="inline" method="post" action="/m/leads/{{ r.id }}/convert"><input type="hidden" name="token" value="{{ token }}"><button>Convert</button></form>{% endif %}
+{% if session.role in ['Admin','Manager'] %}<form class="inline" method="post" action="/m/{{ t }}/{{ r.id }}/delete" onsubmit="return confirm('Delete this record?')"><input type="hidden" name="token" value="{{ token }}"><button class="red">Delete</button></form>{% endif %}
+</td></tr>{% else %}<tr><td colspan="9">No records found.</td></tr>{% endfor %}</table></div>{% endblock %}
